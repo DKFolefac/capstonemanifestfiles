@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-web-app-service
+spec:
+  selector:
+    app: go-web-app
+  ports:
+  - protocol: TCP
+    port: 90  # External port for communication (optional: LoadBalancer)
+    targetPort: 80  # Matches container port
+  type: LoadBalancer  # Adjust service type if needed

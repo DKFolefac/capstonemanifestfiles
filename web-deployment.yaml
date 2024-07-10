@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-go-web
+spec:
+  replicas: 2  # Number of web application replicas (adjust as needed)
+  selector:
+    matchLabels:
+      app: my-go-web
+  template:
+    metadata:
+      labels:
+        app: my-go-web
+    spec:
+      containers:
+      - name: my-go-web
+        image: dkfolefac/wordweb:19  # Replace with your image URI
+        ports:  # Web application port
+          - containerPort: 80
+        env:
+          - name: POSTGRES_HOST
+            value: postgres  # Service name for the database
+          - name: POSTGRES_PORT
+            value: "5432"
+          - name: POSTGRES_USER
+            value: userw
+          - name: POSTGRES_PASSWORD
+            value: passwordw
+          - name: POSTGRES_NAME
+            value: databasew
+        resources:  # Optional resource limits (CPU, memory)
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 1Gi

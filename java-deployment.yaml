@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-api
+spec:
+  replicas: 2  # Number of Java API replicas (can be scaled)
+  selector:
+    matchLabels:
+      app: java-api
+  template:
+    metadata:
+      labels:
+        app: java-api
+    spec:
+      containers:
+      - name: java-api
+        image: dkfolefac/wordapi:50   # Replace with your image details
+        ports:
+        - containerPort: 8080  # Java API port
+        # ... (Optional environment variables for the Java API)

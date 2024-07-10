@@ -1,0 +1,7 @@
+apiVersion: eks.amazonaws.com/v1beta1
+kind: Nodegroup
+metadata:
+  name: my-node-group
+spec:
+  clusterName: Capstone
+  # ... other configuration options (instance type, AMI, IAM role, etc.)
